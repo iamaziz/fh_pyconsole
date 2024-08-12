@@ -33,7 +33,7 @@ Open browser and navigate to `http://localhost:5001`
 
 # Demo
 
-![](./demo.mov)
+[![](./demo.mov)](https://github.com/user-attachments/assets/3d37e95f-fcd2-491d-adac-be86777ef591)
 
 A live demo is available as a HuggingFace space [here](https://huggingface.co/spaces/azizalto/fh_pyconsole).
 
