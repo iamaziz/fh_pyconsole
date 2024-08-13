@@ -3,7 +3,7 @@ from fasthtml.common import (
 )
 
 from code_runner import execute_code as execute
-from utils import github_fork_ribbon
+from utils import github_fork_ribbon, clear_history
 
 app, rt = fast_app(hdrs=[picolink, MarkdownJS(), HighlightJS()])
 log = []
@@ -18,7 +18,6 @@ def pyconsole():
                 Input(name="code", placeholder=">>> Type Python code here (and hit enter)"),
                 hx_post="/run", hx_target="#output", hx_trigger="submit", id="input_form",
             ),
-            Div("Clear log", hx_get="/clear", hx_target="#output", style="background-color: #f0f0f0; border-radius: 10px; padding: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);"),
             cls="container",
             hx_swap="innerHTML show:window:bottom", # automatically scroll to the bottom of the page
         )
@@ -27,7 +26,7 @@ def pyconsole():
 @app.post("/run")
 def run_code(data: dict):
     log.append((data["code"], execute(data["code"])))
-    return Div(*[Div(Pre(Code(code, klass="python")), Div(output, cls="marked"), Div("---", cls="marked")) for code, output in log])
+    return Div(*[Div(Pre(Code(code, klass="python")), Div(output, cls="marked"), Div("---", cls="marked")) for code, output in log]), clear_history()
 
 
 @app.get("/clear")
