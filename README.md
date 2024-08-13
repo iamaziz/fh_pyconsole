@@ -1,14 +1,3 @@
----
-title: PyConsole
-emoji: 🐍
-colorFrom: green
-colorTo: green
-sdk: docker
-app_file: main.py
-pinned: false
----
-
-
 # PyConsole
 
 <a href="https://pyconsole.up.railway.app">

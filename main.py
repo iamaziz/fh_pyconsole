@@ -3,6 +3,7 @@ from fasthtml.common import (
 )
 
 from code_runner import execute_code as execute
+from utils import github_fork_ribbon
 
 app, rt = fast_app(hdrs=[picolink, MarkdownJS(), HighlightJS()])
 log = []
@@ -11,6 +12,7 @@ log = []
 @app.get("/")
 def pyconsole():
     return Main(
+            github_fork_ribbon(),
             Div(id="output"),
             Form(
                 Input(name="code", placeholder=">>> Type Python code here (and hit enter)"),
